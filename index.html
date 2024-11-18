@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M12.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparar el ambiente para el aprendizaje y motivar a los genios.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy seguiremos trabajando en nuestro modelo de avión, afinando detalles y perfeccionando las técnicas que hemos aprendido hasta ahora."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Quiero saber cómo se sienten hoy. Si están emocionados y listos para afinar sus modelos, levanten una mano; si necesitan un momento para concentrarse, crucen los brazos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos para agradecer la oportunidad de aprender y mejorar juntos. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos un solo gran objetivo: perfeccionar el modelo de avión que están construyendo, añadiendo detalles y afinando las formas. Este trabajo será esencial para desarrollar habilidades más avanzadas en modelado 3D."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🚶‍♂️ Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Ejercicio físico para recargar energías y mejorar la concentración.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Caminata Rápida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a activar nuestro cuerpo y nuestra mente con una breve caminata rápida. Durante 1 minuto, caminen por el aula a paso ligero. Esto nos ayudará a recargar energías y preparar nuestra concentración para el trabajo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre la Actividad".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Gran trabajo! Este tipo de actividades nos ayudan a mejorar la circulación y a despejar la mente. Ahora estamos en el estado mental y físico perfecto para continuar con el modelado."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 3.5 minutos</div>
+        <div class="subtitle">Reorganización y planificación colaborativa para perfeccionar los modelos.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Reorganización de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, trabajaremos en los mismos equipos de la misión anterior. Tómense un momento para reagruparse con su compañero. ¡Es hora de continuar el excelente trabajo que empezaron!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 11 "Perfeccionando con Scrumboard".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy seguiremos usando Scrumboard para ayudarnos a organizar el trabajo. Esta vez, nos enfocaremos en perfeccionar el modelo de avión. Esto significa que deberán añadir tantos detalles como sea posible para que el diseño final se vea más profesional y realista. Si se dan cuenta de que necesitan más tareas para organizarse mejor, pueden agregar nuevas columnas o tarjetas en su Tablero Kanban. Por ejemplo, pueden dividir el trabajo en tareas más específicas como 'Detallar las alas' o 'Añadir detalles al fuselaje'. Scrumboard les permitirá ajustar su planificación para que el trabajo fluya de manera ordenada y colaborativa."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 38.5 minutos</div>
+        <div class="subtitle">Perfeccionar el modelo de avión en TinkerCAD añadiendo detalles y realismo.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 13 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Llegó el momento de seguir trabajando en nuestro modelo de avión. En este Challenge, vamos a perfeccionar cada detalle del diseño para hacerlo lo más completo y profesional posible."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 14 "Perfeccionando el Avión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En este Challenge, trabajarán en TinkerCAD para continuar y perfeccionar el modelo del avión que eligieron. Para ayudarles, les proporcionaré un modelo 3D del avión real como referencia. Escaneen el QR que aparece en la pantalla para abrir un visualizador 3D donde podrán observar el modelo desde todos los ángulos. Su objetivo será añadir tantos detalles como puedan: tren de aterrizaje, alerones, decoración, y cualquier elemento funcional que consideren necesario. Piensen en cómo estos detalles aportan realismo y funcionalidad al diseño."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (30 minutos):</strong> Proyectar Diapositiva 15 "Cronómetro - 20 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 16 "Comparación de Modelos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Tiempo! Ahora, júntense con el equipo más cercano para comparar sus modelos. Hablen sobre los detalles que lograron añadir, cómo resolvieron problemas técnicos y qué áreas sienten que podrían mejorar. Este intercambio de ideas les permitirá aprender de las experiencias de otros equipos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (5 minutos):</strong> Proyectar Diapositiva 17 "Cronómetro - 5 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 18 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ¡hemos alcanzado todos los objetivos de esta misión! Hoy llevaron su modelo de avión al siguiente nivel, añadiendo detalles que aportan realismo y funcionalidad. Han demostrado gran habilidad en modelado 3D y un enfoque detallado en sus diseños."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 19 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Increíble trabajo, Genios! Han demostrado creatividad, técnica y colaboración en este Challenge. Por su dedicación, todos se llevan Mon-e como recompensa. ¡Continúen llevando sus habilidades de modelado 3D al máximo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cerrar la misión dejando el espacio limpio y organizado.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 20 y reproducir la animación de honor de dojo.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, como siempre, antes de cerrar nuestra misión, dejemos el Dojo limpio y organizado. Cada equipo pase al frente para devolver las Magic Tablets y asegúrense de que su espacio de trabajo quede impecable. Gracias por su colaboración."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
